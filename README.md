@@ -1,6 +1,6 @@
 #  LangGraph を用いた演習支援 Copilot 実装ドキュメント
 
-##　使用技術スタック
+### 使用技術スタック
 
 | 分類 | 使用技術 |
 |------|-----------|
@@ -13,7 +13,7 @@
 
 ---
 
-## アーキテクチャ構成（LangGraph）
+### アーキテクチャ構成（LangGraph）
 
 各ステップをノードとして構成し、ユーザーの質問に対して条件付きでフローを制御します。
 
@@ -50,7 +50,7 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-##　質問処理の全体フロー
+### 質問処理の全体フロー
 
 1. `chat_input()` で質問受信
 2. `route_question()` でデータソースを振り分け
@@ -62,9 +62,9 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-##　プロンプト例（generateモード）
+### プロンプト例（generateモード）
 
-###　通常モード（OFF）
+### 通常モード（OFF）
 
 ```
 You are a helpful assistant. Use the following context to answer the question.
@@ -80,7 +80,7 @@ Context: {context}
 
 ---
 
-## ✅ 起動方法
+### 起動方法
 
 ```bash
 streamlit run main.py 
