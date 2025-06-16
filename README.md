@@ -37,7 +37,7 @@ class GraphState(TypedDict):
 ```
 
 ---
-##　ヒントモード
+### ヒントモード
 
 ```python
 st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", "ON"])
