@@ -37,7 +37,6 @@ class GraphState(TypedDict):
 ```
 
 ---
-
 ##　ヒントモード
 
 ```python
