@@ -38,7 +38,7 @@ class GraphState(TypedDict):
 
 ---
 
-## ヒントモード
+##　ヒントモード
 
 ```python
 st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", "ON"])
@@ -63,9 +63,9 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-## プロンプト例（generateモード）
+##　プロンプト例（generateモード）
 
-### 通常モード（OFF）
+###　通常モード（OFF）
 
 ```
 You are a helpful assistant. Use the following context to answer the question.
@@ -73,7 +73,7 @@ Question: {question}
 Context: {context}
 ```
 
-### ヒントモード（ON）
+###　ヒントモード（ON）
 
 ```
 あなたは思考を促す教師です。次の質問に対して、解答を与えずに、方針・考える切り口だけを述べてください。
