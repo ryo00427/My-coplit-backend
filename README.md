@@ -1,12 +1,6 @@
-# \U0001F680 LangGraph を用いた演習支援 Copilot 実装ドキュメント
+#  LangGraph を用いた演習支援 Copilot 実装ドキュメント
 
-## \U0001F3AF プロジェクト概要
-
-本プロジェクトは、大学のAI講義における「実装演習の自立支援」を目的として開発された **対話型AI Copilot** です。受講生の質問に対して、文書検索（RAG）・ヒント提示・評価ループを通じて「答えを与える」のではなく「学習を促す」設計を採用しています。
-
----
-
-## \U0001F6E0️ 使用技術スタック
+##　使用技術スタック
 
 | 分類 | 使用技術 |
 |------|-----------|
@@ -19,7 +13,7 @@
 
 ---
 
-## \U0001F9E9 アーキテクチャ構成（LangGraph）
+## アーキテクチャ構成（LangGraph）
 
 各ステップをノードとして構成し、ユーザーの質問に対して条件付きでフローを制御します。
 
@@ -44,7 +38,7 @@ class GraphState(TypedDict):
 
 ---
 
-## \U0001F4A1 ヒントモード
+## U0001F4A1 ヒントモード
 
 ```python
 st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", "ON"])
@@ -57,7 +51,7 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-## \U0001F501 質問処理の全体フロー
+## U0001F501 質問処理の全体フロー
 
 1. `chat_input()` で質問受信
 2. `route_question()` でデータソースを振り分け
@@ -69,7 +63,7 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-## \U0001F9EA プロンプト例（generateモード）
+## U0001F9EA プロンプト例（generateモード）
 
 ### 通常モード（OFF）
 
@@ -99,21 +93,7 @@ Context: {context}
 ## ✅ 起動方法
 
 ```bash
-pip install -r requirements.txt
-streamlit run app.py
+streamlit run main.py 
 ```
 
 ---
-
-## \U0001F9F1 今後の拡張アイデア
-
-- ヒント＋回答の同時表示（タブ形式）
-- 学習ログ保存（Firestore連携など）
-- 質問カテゴリ自動分類（分類ノードの追加）
-- Slack連携Bot化 or FastAPIでAPI提供化
-
----
-
-## \U0001F4DD 注意
-
-このアプリは教育演習支援用であり、医療・法律・セキュリティ領域では使用しないでください。
