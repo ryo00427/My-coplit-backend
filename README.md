@@ -38,7 +38,7 @@ class GraphState(TypedDict):
 
 ---
 
-## U0001F4A1 ヒントモード
+## ヒントモード
 
 ```python
 st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", "ON"])
@@ -51,7 +51,7 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-## U0001F501 質問処理の全体フロー
+##　質問処理の全体フロー
 
 1. `chat_input()` で質問受信
 2. `route_question()` でデータソースを振り分け
@@ -63,7 +63,7 @@ st.session_state.hint_mode = st.sidebar.selectbox("ヒントモード", ["OFF", 
 
 ---
 
-## U0001F9EA プロンプト例（generateモード）
+## プロンプト例（generateモード）
 
 ### 通常モード（OFF）
 
@@ -78,15 +78,6 @@ Context: {context}
 ```
 あなたは思考を促す教師です。次の質問に対して、解答を与えずに、方針・考える切り口だけを述べてください。
 ```
-
----
-
-## \U0001F512 セキュリティとキー管理
-
-- `.env` に `OPENAI_API_KEY` を定義
-- `.gitignore` に `.env` を必ず追加
-- GitHub Push Protection により `.env` の push は禁止
-- `.env.example` にダミー値を記載し、チームで共有
 
 ---
 
