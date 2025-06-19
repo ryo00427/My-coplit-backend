@@ -7,12 +7,11 @@ from langgraph.graph import StateGraph, START, END
 from typing import List, Literal, TypedDict
 import asyncio
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import Chroma
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain.schema import Document
 from dotenv import load_dotenv
-
+from langchain_community.document_loaders import PyPDFLoader
 # .envファイルからAPIキー等を読み込む
 load_dotenv()
 
@@ -53,20 +52,23 @@ async def route_question(state):
     source = question_router.invoke({"question": state["question"]})
     return source.datasource
 
-# ドキュメントをWebから読み込み → ベクトル化 → 検索（RAG）
+# ドキュメントをPDFから読み込み → ベクトル化 → 検索（RAG）
 async def retrieve(state):
     embd = OpenAIEmbeddings()
-    urls = [
-        "https://zenn.dev/meu/articles/27dd04851c01c4",
-        "https://zenn.dev/tsuzukia/articles/0724729c2b733e",
-        "https://zenn.dev/umi_mori/books/prompt-engineer",
+
+    # ローカルのPDFファイルを読み込む（複数ファイルでもOK）
+    pdf_paths = [
+        "AIエンジニアリング講座第3回前半.pdf",
+        "AIエンジニアリング実践_第3回後半.pdf"
     ]
-    docs = [WebBaseLoader(url).load() for url in urls]
-    docs_list = [item for sublist in docs for item in sublist]
+    docs = []
+    for path in pdf_paths:
+        loader = PyPDFLoader(path)
+        docs.extend(loader.load())
 
     # ドキュメント分割 → ベクトル化
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(chunk_size=500, chunk_overlap=0)
-    doc_splits = text_splitter.split_documents(docs_list)
+    doc_splits = text_splitter.split_documents(docs)
     vectorstore = Chroma.from_documents(doc_splits, collection_name="rag-chroma", embedding=embd)
 
     retriever = vectorstore.as_retriever()
