@@ -58,8 +58,8 @@ async def retrieve(state):
 
     # ローカルのPDFファイルを読み込む（複数ファイルでもOK）
     pdf_paths = [
-        "AIエンジニアリング講座第3回前半.pdf",
-        "AIエンジニアリング実践_第3回後半.pdf"
+        ".pdf",
+        ".pdf"
     ]
     docs = []
     for path in pdf_paths:
