@@ -23,14 +23,6 @@ class RouteQuery(BaseModel):
 class GradeDocuments(BaseModel):
     binary_score: str = Field(...)
 
-# 幻覚（hallucination）の有無を評価するためのスキーマ（未使用）
-class GradeHallucinations(BaseModel):
-    binary_score: str = Field(...)
-
-# 回答の妥当性を評価するためのスキーマ（未使用）
-class GradeAnswer(BaseModel):
-    binary_score: str = Field(...)
-
 # LangGraphに渡す状態情報の構造
 class GraphState(TypedDict):
     question: str
